@@ -1,8 +1,8 @@
 # README
 
-#DB設計
+# DB設計
 
-##messagesテーブル
+## messagesテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -11,11 +11,11 @@
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
-###associateion
+### associateion
 - belongs_to :group
 - belongs_to :user
 
-##usersテーブル
+## usersテーブル
 
 |Column|Type|Option|
 |------|----|------|
@@ -24,32 +24,32 @@
 |group_id|integer|null: false, foreign_key: true|
 |password|integer|null:false|
 
-###associateion
+### associateion
 - has_many :messages
 - has_many :groups_users
 - has_many :groups, though: :groups_users
 
 
-##groupsテーブル
+## groupsテーブル
 
 |Column|Type|Option|
 |------|----|------|
 |user_id|integer|null: false, foreign_key: true|
 |messages|integer|null: false|
 
-###association
+### association
 - has_many :messages
 - has_many :groups_users
 - has_many :users, though: :groups_users
 
 
-##groups_usersテーブル
+## groups_usersテーブル
 
 |Column|Type|Option|
 |------|----|------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
-###association
+### association
 - belings_to :group
 - belongs_to :user
