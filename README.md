@@ -12,8 +12,8 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ###associateion
--belongs_to :group
--belongs_to :user
+- belongs_to :group
+- belongs_to :user
 
 ##usersテーブル
 
