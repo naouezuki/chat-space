@@ -19,7 +19,7 @@
 
 |Column|Type|Option|
 |------|----|------|
-|username|integer|null: false|
+|name|integer|null: false|
 |email|integer|null: false|
 |group_id|integer|null: false, foreign_key: true|
 |password|integer|null:false|
