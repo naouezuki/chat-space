@@ -32,10 +32,7 @@
 
 ## groupsテーブル
 
-|Column|Type|Option|
-|------|----|------|
-|user_id|integer|null: false, foreign_key: true|
-|messages|integer|null: false|
+
 
 ### association
 - has_many :messages
