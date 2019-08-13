@@ -8,8 +8,8 @@
 |------|----|------|
 |text|text||
 |image|string||
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### associateion
 - belongs_to :group
@@ -44,8 +44,8 @@
 
 |Column|Type|Option|
 |------|----|------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### association
 - belings_to :group
