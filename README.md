@@ -29,7 +29,9 @@
 
 
 ## groupsテーブル
-
+|Column|Type|Option|
+|------|----|------|
+|name|integer|null: false|
 
 
 ### association
