@@ -19,7 +19,8 @@
 
 |Column|Type|Option|
 |------|----|------|
-|password|integer|null:false|
+|name|integer|null: false|
+|password|integer|null: false|
 
 ### associateion
 - has_many :messages
