@@ -19,7 +19,7 @@
 
 |Column|Type|Option|
 |------|----|------|
-|name|integer|null: false|
+|name|string|null: false, index: true|
 |password|integer|null: false|
 
 ### associateion
@@ -31,7 +31,7 @@
 ## groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|integer|null: false|
+|name|string|null: false|
 
 
 ### association
