@@ -2,6 +2,6 @@ $prefixes: -webkit-, -moz-, -ms-, -o-, '';
 
 @mixin flexbox {
   @each $prefix in $prefixes {
-    display: #{$prefix}flex;
+    display: #{$prefix} flex;
   }
 }
