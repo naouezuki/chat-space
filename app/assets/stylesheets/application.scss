@@ -5,5 +5,7 @@
 @import "mixins/vendor_prefix";
 @import "modules/side_bar";
 @import "modules/chat";
-@import "messages/messages.css";
+@import "modules/user";
+@import "modules/flash";
+@import "messages/messages.scss";
 @import "font-awesome";

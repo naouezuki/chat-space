@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class GroupsController < ApplicationController
   def index
     render "messages/index"
   end
