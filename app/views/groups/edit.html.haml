@@ -1,6 +1,6 @@
 .chat-group-form
   %h1 チャットグループ編集
-  %form
+  = render partial: 'form', locals: { group: @group }
     .chat-group-form__errors
       %h2
         1件のエラーが発生しました。
