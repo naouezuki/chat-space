@@ -18,9 +18,9 @@ $(function(){
          </div>
          ${addImage}
        </div>`
-     return html;
-    } 
-  };
+    return html;
+  } 
+};
 
 $('.js-form').on('submit', function(e){
  e.preventDefault();
