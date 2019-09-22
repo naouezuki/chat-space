@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', function(){
           <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.id} data-user-name=${user.name}>追加</div>
       </div>`;
       search_list.append(html);
-    return html;
   }
 
   function appendErrMsgToHTML(msg){
@@ -19,8 +18,9 @@ $(document).on('turbolinks:load', function(){
           <p class="chat-group-user__name">${msg}</p>
       </div>`;
       search_list.append(html);
-    return html;
   }
+
+  
 
 $('#user-search-field').on('keyup', function(e){
   var input = $("#user-search-field").val();

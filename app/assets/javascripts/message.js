@@ -19,8 +19,7 @@ $(function(){
          ${addImage}
        </div>`
     return html;
-  } 
-};
+  };
 
 $('.js-form').on('submit', function(e){
  e.preventDefault();
@@ -46,3 +45,4 @@ $('.js-form').on('submit', function(e){
   return false;
   });
 });
+};
