@@ -18,8 +18,7 @@ $(function(){
          </div>
          ${addImage}
        </div>`
-     return html;
-    } 
+    return html;
   };
 
 $('.js-form').on('submit', function(e){
@@ -46,3 +45,4 @@ $('.js-form').on('submit', function(e){
   return false;
   });
 });
+
