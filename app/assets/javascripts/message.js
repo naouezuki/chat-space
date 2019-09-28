@@ -56,6 +56,11 @@ $('.js-form').on('submit', function(e){
     })
     .done(function(messages) {
       var insertHTML = '';
+      messages.forEach(function(message){
+        insertHTML = buildMessageHTML(message);
+      $('.messages').append(insertHTML);
+      })
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       console.log('error');
