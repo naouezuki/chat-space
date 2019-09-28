@@ -45,6 +45,28 @@ $('.js-form').on('submit', function(e){
   return false;
   });
 
+  var buildMessageHTML = function(message) {
+    var addImage = (message.image.url) ? `<img class = "lower-message__image", src="${message.image.url}">` : ''
+      var html = 
+        `<div class="message" data-id=${message.id}>
+        <div class="upper-message">
+          <div class="upper-message__user-name">
+            ${message.user_name}
+          </div>
+          <div class="upper-message__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="lower-message">
+          <p class="lower-message__content">
+            ${message.content}
+          </p>
+          ${addImage}
+        </div>
+      </div>`
+    return html;
+  };
+
   var reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $('.message').last().data("id");
@@ -64,5 +86,5 @@ $('.js-form').on('submit', function(e){
     .fail(function() {
       console.log('error');
     });
+  };
 });
-
