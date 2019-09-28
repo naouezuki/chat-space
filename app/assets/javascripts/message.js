@@ -1,23 +1,23 @@
 $(function(){ 
-  function buildHTML(message){
-    var addImage = (message.image) ? `<img class = "image_size", src="${message.image}">` : ''
+  function buildMessageHTML(message){
+    var addImage = (message.image.url) ? `<img class = "image_size", src="${message.image.url}">` : ''
      var html =
-      `<div class="message" data-message-id=${message.id}>
-         <div class="upper-message">
-           <div class="upper-message__user-name">
-             ${message.user_name}
-           </div>
-           <div class="upper-message__date">
-             ${message.date}
-           </div>
-         </div>
-         <div class="lower-message">
-           <p class="lower-message__content">
-             ${message.content}
-           </p>
-         </div>
-         ${addImage}
-       </div>`
+      `<div class="message" data-id=${message.id}>
+        <div class="upper-message">
+          <div class="upper-message__user-name">
+            ${message.user_name}
+          </div>
+          <div class="upper-message__date">
+            ${message.date}
+          </div>
+        </div>
+        <div class="lower-message">
+          <p class="lower-message__content">
+            ${message.content}
+          </p>
+          ${addImage}
+        </div>
+      </div>`
     return html;
   };
 
@@ -34,7 +34,7 @@ $('.js-form').on('submit', function(e){
     contentType: false
   })
   .done(function(data){
-    var html = buildHTML(data);
+    var html = buildMessageHTML(data);
     $('.messages').append(html);
     $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     $('form')[0].reset();
@@ -45,43 +45,17 @@ $('.js-form').on('submit', function(e){
   return false;
   });
 
-  var buildMessageHTML = function(message) {
-    var addImage = (message.image.url) ? `<img class = "lower-message__image", src="${message.image.url}">` : ''
-      var html = 
-        `<div class="message" data-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
-          </div>
-          <div class="upper-message__date">
-            ${message.created_at}
-          </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
-          ${addImage}
-        </div>
-      </div>`
-    return html;
-  };
-
   var reloadMessages = function() {
-    //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     var last_message_id = $('.message').last().data("id");
     var group_id = $(".current-group").data("group-id");
     $.ajax({
-      //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: '/groups/' + group_id + '/api/messages'
-      //ルーティングで設定した通りhttpメソッドをgetに指定
       type: 'get',
       dataType: 'json',
-      //dataオプションでリクエストに値を含める
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
+      var insertHTML = '';
     })
     .fail(function() {
       console.log('error');
