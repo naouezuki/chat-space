@@ -1,2 +1,2 @@
-Class Users::ApplicationController  < ApplicationController
-end
+# Class Users::ApplicationController  < ApplicationController
+# end
