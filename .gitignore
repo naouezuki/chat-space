@@ -21,3 +21,5 @@
 .DS_Store
 group-materials/
 user-materials/
+
+config/secrets.yml
