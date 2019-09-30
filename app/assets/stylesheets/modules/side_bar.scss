@@ -32,15 +32,16 @@
     .group {
       box-sizing: border-box;
       padding: 20px 0 40px;
-      text-decoration:none;
       &__name {
         font-size: $side_group_name;
         color: $white;
+        text-decoration:none;
       }
       &__message {
         font-size: $side_group_message;
         margin-top: 5px;
         color: $white;
+        text-decoration:none;
       }
     }
   }
