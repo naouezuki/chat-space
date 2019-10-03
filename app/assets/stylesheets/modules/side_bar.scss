@@ -29,8 +29,10 @@
     background-color: $side_blue_light;
     height: calc(100vh - 100px);
     padding: 0 20px;
-    text-decoration:none;
     .group {
+      .chatgroup{
+        text-decoration: none;
+      }
       box-sizing: border-box;
       padding: 20px 0 40px;
       &__name {
