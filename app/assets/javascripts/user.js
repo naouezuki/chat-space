@@ -20,21 +20,21 @@ $(document).on('turbolinks:load', function(){
       search_list.append(html);
   }
 
-  function appendUser(user_id, name){
+  function appendUser(user){
     var html = 
       `<div class='chat-group-user'>
         <input name='group[user_ids][]' type='hidden' value='${user_id}'>
-        <p class='chat-group-user__name'>${name}</p>
+        <p class='chat-group-user__name'>${user.name}</p>
         <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
       </div>`
       member_list.append(html);
   }
 
+  var usersname = [];
 
   $('#user-search-field').on('keyup', function(){
     var input = $("#user-search-field").val();
     
-
     $.ajax({
       type: 'GET',
       url:  '/users',
@@ -46,28 +46,57 @@ $(document).on('turbolinks:load', function(){
       $('#user-search-result').empty();
       if (users.length !== 0) {
         users.forEach(function(user){
-          appendUserSearchList(user);
-        });
+          var htmlnew = appendUserSearchList(user);
+          if(usersname.indexOf(user.name) === -1){
+          $("#user-search-result").append(htmlnew);
+        }});
+        if (input.length === 0) {
+          $(".chat-group-user.clearfix").remove();
+        };
       }
-
       else {
-        appendErrMsgToHTML("一致するユーザーが見つかりません");
-    }
-  })
+        var htmler = appendErrMsgToHTML("一致するユーザーが見つかりません");
+        $("#user-search-result").append(htmler);
+      }
+    })
+    .fail(function() {
+      alert('ユーザー検索に失敗しました');
+    });
+    return false;  
+    });
 
-  .fail(function() {
-    alert('ユーザー検索に失敗しました');
-  })
-  });
 
   $('#user-search-result').on('click','.user-search-add',function(){
     var user_id = $(this).data('user-id');
     var name = $(this).data('user-name');
-    appendUser(user_id, name);
+    // appendUser(user_id, name);
     $(this).parent().remove();
-  })
+    $.ajax({
+      type: 'GET',
+      url: '/users/new',
+      data: { key:{name: name, id: id} },
+      dataType: 'json',
+      contentType: false
+    })
+
+    .done(function(user){
+      usersname.push(user.name)
+      var htmlnew = appendUser(user);
+      $("#chat-group-user").append(htmlnew);
+    })
+    .fail(function() {
+      alert('error');
+    });
+    return false;  
+    });
 
   $('#member-append').on('click','.user-search-remove',function(){
-    $('#member-append').empty();
+    var name = $(this).prev().text();
+    for(i=0; i<usersname.length; i++){
+      if(usersname[i] == name){
+      usersname.splice(i,1);
+      }
+    }
+    $(this).parent().remove();
   })
 });
