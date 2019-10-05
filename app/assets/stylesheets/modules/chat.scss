@@ -43,7 +43,7 @@
     padding: 46px 40px 0;
     // height: calc(100% - 100px - 90px);
     overflow: scroll;
-    height: 100vh;
+    height: calc(100vh - 170px);
     .message {
       padding: 0px 0px 40px;
       .upper-message {
@@ -74,13 +74,13 @@
     background-color: #DDDDDD;
     box-sizing: border-box;
     height: 90px;
-    padding: 20px 50px 20px 40px;
+    padding: 20px 40px;
     &__message {
       border: none;
       float: left;
       padding: 0px 40px 0px 10px;
       height: 50px;
-      width: calc(100% - 150px);
+      width: calc(100% - 200px);
     }
     &__mask {
       background-color: $white;
