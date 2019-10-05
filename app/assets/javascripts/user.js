@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function(){
-
+$(function(){
+  // (document).on('turbolinks:load', 
   var search_list = $("#user-search-result");
   var member_list = $("#member-append");
 
@@ -34,28 +34,30 @@ $(document).on('turbolinks:load', function(){
 
   var usersname = [];
 
-  $('#user-search-field').on('keyup', function(){
+  $('#user-search-field').on('keyup', function(e){
+    e.preventDefault();
     var input = $("#user-search-field").val();
     var group_id = $('chat__group_id').val();
-    // console.log(input);    
+        
     $.ajax({
       type: 'GET',
       url:  '/users',
       data: { keyword: input,groupId: group_id },
-      dataType: 'json'
+      dataType: 'json',
+      contentType: false
     })
 
     .done(function(users){
       $('#user-search-result').empty();
       if (users.length !== 0) {
         users.forEach(function(user){
+          console.log(user.name)
           var htmlnew = appendUserSearchList(user);
           if(usersname.indexOf(user.name) === -1){
           $("#user-search-result").append(htmlnew);
         }});
         if (input.length === 0) {
-          // $(".chat-group-user.clearfix").remove();
-          $('#user-search-result').remove();
+          $('#user-search-result').empty();
         };
       }
       else {

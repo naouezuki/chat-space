@@ -9,13 +9,13 @@
     line-height: 100px;
     padding: 0 20px;
     &__name {
+      width: 220px;
       display: inline-block;
       font-size: $side_header_font;
       font-weight: bold;
     }
     &__lists {
-      display: inline-block;
-      margin-left: 135px;
+      float: right;
       .list {
         display: inline-block;
       }
