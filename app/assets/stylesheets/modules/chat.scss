@@ -42,8 +42,8 @@
     box-sizing: border-box;
     padding: 46px 40px 0;
     height: calc(100% - 100px - 90px);
+    overflow: scroll;
     .message {
-      overflow: scroll;
       .upper-message {
         display: flex;
         &__user-name {
@@ -76,6 +76,7 @@
     &__message {
       border: none;
       float: left;
+      padding: 0px 40px 0px 10px;
       height: 50px;
       width: calc(100% - 150px);
     }

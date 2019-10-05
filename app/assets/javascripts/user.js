@@ -23,10 +23,12 @@ $(document).on('turbolinks:load', function(){
   function appendUser(user){
     var html = 
       `<div class='chat-group-user'>
-        <input name='group[user_ids][]' type='hidden' value='${user_id}'>
+        <input name='group[user_ids][]' type='hidden' value='${user.id}'>
         <p class='chat-group-user__name'>${user.name}</p>
         <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
       </div>`
+
+      // console.log(html)
       member_list.append(html);
   }
 
@@ -34,11 +36,12 @@ $(document).on('turbolinks:load', function(){
 
   $('#user-search-field').on('keyup', function(){
     var input = $("#user-search-field").val();
-    
+    var group_id = $('chat__group_id').val();
+    // console.log(input);    
     $.ajax({
       type: 'GET',
       url:  '/users',
-      data: { keyword: input},
+      data: { keyword: input,groupId: group_id },
       dataType: 'json'
     })
 
@@ -51,7 +54,8 @@ $(document).on('turbolinks:load', function(){
           $("#user-search-result").append(htmlnew);
         }});
         if (input.length === 0) {
-          $(".chat-group-user.clearfix").remove();
+          // $(".chat-group-user.clearfix").remove();
+          $('#user-search-result').remove();
         };
       }
       else {
@@ -66,20 +70,25 @@ $(document).on('turbolinks:load', function(){
     });
 
 
-  $('#user-search-result').on('click','.user-search-add',function(){
-    var user_id = $(this).data('user-id');
+  $(document).on('click','.user-search-add',function(e){
+    e.preventDefault();
+    var id = $(this).data('user-id');
     var name = $(this).data('user-name');
+    // console.log(id);
+    // console.log(name);
     // appendUser(user_id, name);
     $(this).parent().remove();
     $.ajax({
       type: 'GET',
       url: '/users/new',
+      // url: '/users',
       data: { key:{name: name, id: id} },
       dataType: 'json',
       contentType: false
     })
 
     .done(function(user){
+      console.log(user.name);
       usersname.push(user.name)
       var htmlnew = appendUser(user);
       $("#chat-group-user").append(htmlnew);

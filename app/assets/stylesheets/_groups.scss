@@ -13,7 +13,7 @@
     height: calc(100vh - 100px);
     background-color: #2f3e51;
     padding: 20px 20px 0;
-    overflow: scroll;
+    // overflow: scroll;
   }
 }
 
@@ -26,12 +26,12 @@
     display: flex;
     justify-content: space-between;
     border-bottom: solid 1px #eee;
-    overflow: scroll;
+    // overflow: scroll;
   }
   &__message {
     height: calc(100vh - 190px);
     padding: 46px 40px;
     background-color: #fafafa;
-    overflow: scroll;
+    // overflow: scroll;
   }
 }
